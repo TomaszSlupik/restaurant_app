@@ -1,0 +1,96 @@
+$basic: #fff;
+$main: #926F33;
+
+.header {
+    position: relative;
+    width: 100vw;
+    &__nav {
+        position: relative;
+        width: 100vw;
+        height: 70px;
+        background-color: none;
+    }
+    &__box {
+        position: relative;
+        width: 100vw;
+        height: 300px;
+        &-shadow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(45deg, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
+            &--header {
+                position: absolute;
+                top: 2%;
+                font-size: 3rem;
+                font-weight: 500;
+                color: $basic;
+                margin-left: 0.4em;
+                &---text {
+                    font-size: 1rem;
+                    font-weight: 300;
+                    color: $main;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and  (min-width: 576px) {
+    .header {
+        &__box {
+            height: 400px;
+            &-shadow {
+                &--header {
+                    font-size: 4rem;
+                    &---text {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and  (min-width: 768px) {
+    .header {
+        &__box {
+            height: 450px;
+            &-shadow {
+                &--header {
+                    font-size: 5rem;
+                    &---text {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        
+        }
+    }
+}
+
+@media only screen and  (min-width: 768px) {
+    .header {
+        &__box {
+            height: 500px;
+            &-shadow {
+                &--header {
+                    font-size: 6rem;
+                    &---text {
+                        font-size: 2.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and  (min-width: 1200px) {
+    .header {
+        &__box {
+            height: 550px;
+        }
+    }
+}
