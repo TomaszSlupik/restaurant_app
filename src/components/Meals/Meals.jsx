@@ -6,29 +6,27 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
-import Data from '../../data/data.json'
+import Box from '@mui/material/Box';
 import './Meals.scss'
+import { ThemeProvider } from '@emotion/react';
+import breakpoints from '../../theme/breakpoints';
+import Mycard from '../../style/mycard';
 
 
-export default function Meals() {
-
-const [meals, setMeals] = useState(Data)
-
-const style = {
-    card: {
-        maxWidth: '345px', height: '345px'
-    }
-}
+export default function Meals({allproducts, setAllProducts}) {
 
   return (
     <div className='meals'>
         <div className="meals__box">
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>    
-        {meals.map((el, index) => {
-        return (
-            <div key={index}>
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>  
+        {allproducts.map((el, index) => {
+            return (
+                <div key={index}>
+                <ThemeProvider theme={breakpoints}>
                  <Grid item xs={12} sm={6} md={4}>
-                <Card style={style.card}>
+                 <Mycard>
+                <Card>
                 <CardMedia
                     component="img"
                     alt={el.name_meal}
@@ -48,11 +46,15 @@ const style = {
                     <Button size="small">Learn More</Button>
                 </CardActions>
                 </Card>
+                </Mycard>
                 </Grid>
-            </div>
-        )
-    })}
+                </ThemeProvider>
+                </div>  
+            )
+        })}
+
     </Grid>
+    </Box>
         </div>
     </div>
   )

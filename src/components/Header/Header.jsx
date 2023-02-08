@@ -2,12 +2,12 @@ import React from 'react'
 import Nav from '../Nav/Nav'
 import './Header.scss'
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div>
         <div className="header">
             <div className="header__nav">
-              <Nav />
+              <Nav searchMeal={props.searchMeal}/>
             </div>
             <div className="header__box">
                 <div className="header__box-shadow">

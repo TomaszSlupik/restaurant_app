@@ -6,8 +6,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 
 
-export default function Nav() {
+export default function Nav(props) {
 
+  const testowanie = () => {
+    props.searchMeal()
+  }
 
   return (
     <div>
