@@ -56,7 +56,7 @@ $main: #926F33;
 @media only screen and  (min-width: 768px) {
     .header {
         &__box {
-            height: 450px;
+            // height: 400px;
             &-shadow {
                 &--header {
                     font-size: 5rem;
@@ -73,7 +73,7 @@ $main: #926F33;
 @media only screen and  (min-width: 768px) {
     .header {
         &__box {
-            height: 500px;
+            // height: 500px;
             &-shadow {
                 &--header {
                     font-size: 6rem;
@@ -90,7 +90,7 @@ $main: #926F33;
 @media only screen and  (min-width: 1200px) {
     .header {
         &__box {
-            height: 550px;
+            // height: 550px;
         }
     }
 }

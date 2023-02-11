@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import './Meals.scss'
 import { ThemeProvider } from '@emotion/react';
 import breakpoints from '../../theme/breakpoints';
 import Mycard from '../../style/mycard';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import IconButton from '@mui/material/IconButton';
+import themeColor from '../../theme/theme';
 
-
-export default function Meals({allproducts, setAllProducts}) {
+export default function Meals({allproducts, setAllProducts, colorTheme}) {
 
   return (
     <div className='meals'>
         <div className="meals__box">
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>  
+        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 2 }} > 
+        <ThemeProvider theme={breakpoints}>
         {allproducts.map((el, index) => {
             return (
-                <div key={index}>
-                <ThemeProvider theme={breakpoints}>
-                 <Grid item xs={12} sm={6} md={4}>
+                     <Grid item xs={12} sm={12} md={6} key={index} style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: '0em'}}>
                  <Mycard>
                 <Card>
                 <CardMedia
@@ -42,18 +42,21 @@ export default function Meals({allproducts, setAllProducts}) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Share</Button>
-                    <Button size="small">Learn More</Button>
+                <ThemeProvider theme={themeColor}>
+                <IconButton color={colorTheme} aria-label="add to shopping cart">
+                        Do koszyka
+                <AddShoppingCartIcon />
+                </IconButton>
+                </ThemeProvider>
                 </CardActions>
                 </Card>
                 </Mycard>
                 </Grid>
-                </ThemeProvider>
-                </div>  
-            )
-        })}
-
-    </Grid>
+               
+                 )
+                })} 
+        </ThemeProvider>
+   </Grid>
     </Box>
         </div>
     </div>

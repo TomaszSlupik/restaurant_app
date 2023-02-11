@@ -9,7 +9,7 @@ const breakpointValues = {
     xl: 1200,
     xxl: 1400
   };
-  const breakpoints = createTheme({ breakpoints: { values: breakpointValues } });
+  const theme = createTheme({ breakpoints: { values: breakpointValues } });
 
 
-export default breakpoints
+export default theme

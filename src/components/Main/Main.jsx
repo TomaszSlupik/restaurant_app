@@ -3,21 +3,39 @@ import Layout from '../../layout/Layout'
 import Header from '../Header/Header'
 import Meals from '../Meals/Meals'
 import Data from './../../data/data.json'
+import './Main.scss'
 
 export default function Main() {
 
   const [allproducts, setAllProducts] = useState(Data)
-  
-  const searchMeal = () => {
+  const [colorTheme, setColorTheme] = useState('primary')
+
+// Wyszukiwarka 
+const searchMeal = (inputValue) => {
     console.log('szukaj posiłków')
+    const searchMeal  = allproducts.filter((el) => 
+    el.name_meal.toLowerCase().includes(inputValue.toLowerCase()))
+    setAllProducts(searchMeal)
+}
+
+// Wszystkie produkty na liście
+const allProductList = () => {
+  setAllProducts(Data)
+}
+
+// Zmiana koloru Layoutu
+const changeColor = () => {
+  const newColorTheme = colorTheme === 'primary' ? 'secondary' : 'primary'
+  setColorTheme(newColorTheme)
+  console.log(newColorTheme)
 }
 
   return (
     <div>
-              <div>
+              <div className='main'>
                 <Layout 
-                  header={<Header searchMeal={searchMeal}/>}
-                  meals={<Meals allproducts={allproducts} setAllProducts={setAllProducts}/>}
+                  header={<Header searchMeal={searchMeal} allProductList={allProductList} changeColor={changeColor}/>}
+                  meals={<Meals allproducts={allproducts} setAllProducts={setAllProducts} colorTheme={colorTheme}/>}
                   />
               </div>
     </div>

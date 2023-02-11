@@ -15,13 +15,34 @@
     },
     {
         "id": 2,
+        "name_meal": "Kopytka",
+        "image": "/img/kopytka.jpg", 
+        "price": 20, 
+        "describe": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo necessitatibus, repellendus ad deleniti laboriosam nisi eveniet cumque et quia unde sequi perferendis error ipsum illum provident cum doloribus tenetur quos?"
+    },
+    {
+        "id": 3,
+        "name_meal": "Burger z frytkami",
+        "image": "/img/hamburger.jpg", 
+        "price": 20, 
+        "describe": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo necessitatibus, repellendus ad deleniti laboriosam nisi eveniet cumque et quia unde sequi perferendis error ipsum illum provident cum doloribus tenetur quos?"
+    },
+    {
+        "id": 4,
         "name_meal": "Spaghetti bolognese",
         "image": "/img/pasta.jpg", 
         "price": 20, 
         "describe": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo necessitatibus, repellendus ad deleniti laboriosam nisi eveniet cumque et quia unde sequi perferendis error ipsum illum provident cum doloribus tenetur quos?"
     },
     {
-        "id": 3,
+        "id": 5,
+        "name_meal": "Spaghetti bolognese",
+        "image": "/img/pasta.jpg", 
+        "price": 20, 
+        "describe": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo necessitatibus, repellendus ad deleniti laboriosam nisi eveniet cumque et quia unde sequi perferendis error ipsum illum provident cum doloribus tenetur quos?"
+    },
+    {
+        "id": 6,
         "name_meal": "Spaghetti bolognese",
         "image": "/img/pasta.jpg", 
         "price": 20, 

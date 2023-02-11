@@ -7,7 +7,7 @@ export default function Header(props) {
     <div>
         <div className="header">
             <div className="header__nav">
-              <Nav searchMeal={props.searchMeal}/>
+              <Nav searchMeal={props.searchMeal} allProductList={props.allProductList} changeColor={props.changeColor}/>
             </div>
             <div className="header__box">
                 <div className="header__box-shadow">
