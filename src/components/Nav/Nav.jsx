@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './Nav.scss'
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
@@ -32,6 +32,18 @@ export default function Nav(props) {
     props.changeColor()
   }
 
+
+
+  const inputRef = useRef(null)
+
+  const focusInput = () => {
+    inputRef.current.focus()
+  }
+
+  useEffect(() => {
+    focusInput()
+  }, [])
+
   return (
     <div>
         <ThemeProvider theme={themeColor}>
@@ -42,8 +54,10 @@ export default function Nav(props) {
             <div className="nav__search">
             <Paper component="form"
             style={{width: '255px'}}
+            
             >
             <InputBase
+                inputRef={inputRef}
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Wyszukaj dania"
                 inputProps={{ 'aria-label': 'search meals' }}

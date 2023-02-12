@@ -16,6 +16,8 @@ import themeColor from '../../theme/theme';
 
 export default function Meals({allproducts, setAllProducts, colorTheme}) {
 
+    console.log('Posiłki')
+
   return (
     <div className='meals'>
         <div className="meals__box">

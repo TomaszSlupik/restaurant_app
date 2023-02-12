@@ -4,8 +4,10 @@ import Header from '../Header/Header'
 import Meals from '../Meals/Meals'
 import Data from './../../data/data.json'
 import './Main.scss'
+import Menu from '../Menu/Menu'
 
-export default function Main() {
+export default function Main()  {
+
 
   const [allproducts, setAllProducts] = useState(Data)
   const [colorTheme, setColorTheme] = useState('primary')
@@ -27,16 +29,17 @@ const allProductList = () => {
 const changeColor = () => {
   const newColorTheme = colorTheme === 'primary' ? 'secondary' : 'primary'
   setColorTheme(newColorTheme)
-  console.log(newColorTheme)
 }
 
   return (
     <div>
               <div className='main'>
                 <Layout 
+                  menu={<Menu />}
                   header={<Header searchMeal={searchMeal} allProductList={allProductList} changeColor={changeColor}/>}
                   meals={<Meals allproducts={allproducts} setAllProducts={setAllProducts} colorTheme={colorTheme}/>}
                   />
+
               </div>
     </div>
   )
