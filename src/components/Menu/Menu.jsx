@@ -1,31 +1,31 @@
-import React, { useState } from 'react'
-// import LoginContext from '../../context/loginContext'
+import React from 'react'
+import useLogin from '../../hooks/useLogin'
+
 
 export default function Menu() {
 
-    // const loginverification = useContext(LoginContext)
-    const [loginverification, setLoginVerification] = useState (false)
+    const [login, setLogin] = useLogin()
 
-    const login = (e) => {
+    const loginveryfication = (e) => {
         e.preventDefault()
-        setLoginVerification(true)
+        setLogin(true)
     }
 
-    const logout = (e) => {
+    const logouteryfication = (e) => {
         e.preventDefault()
-        setLoginVerification(false)
+        setLogin(false)
     }
 
   return (
     <div>
         {
-            loginverification ? 
+            login ? 
             <div
-            onClick={logout}
+            onClick={logouteryfication}
             >Wyloguj</div>
              : 
              <div
-             onClick={login}
+             onClick={loginveryfication}
              >Zaloguj</div>
         }
     </div>

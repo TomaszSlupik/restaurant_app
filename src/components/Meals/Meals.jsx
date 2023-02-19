@@ -13,10 +13,19 @@ import Mycard from '../../style/mycard';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import themeColor from '../../theme/theme';
+import useLogin from '../../hooks/useLogin';
 
-export default function Meals({allproducts, setAllProducts, colorTheme}) {
+export default function Meals({allproducts, setAllProducts, colorTheme, lastBuy}, props) {
 
-    console.log('Posiłki')
+    const [login] = useLogin();
+
+    const meal = allproducts.map (el => el.name_meal)
+
+    // ostatnio kupione 
+    const clickMeal = (e) => {
+        e.preventDefault()
+        lastBuy(allproducts.map(el => el.name_meal))
+    }
 
   return (
     <div className='meals'>
@@ -45,10 +54,17 @@ export default function Meals({allproducts, setAllProducts, colorTheme}) {
                 </CardContent>
                 <CardActions>
                 <ThemeProvider theme={themeColor}>
-                <IconButton color={colorTheme} aria-label="add to shopping cart">
-                        Do koszyka
-                <AddShoppingCartIcon />
-                </IconButton>
+                {
+                    login ?
+                     <IconButton 
+                     onClick={clickMeal}
+                     color={colorTheme} aria-label="add to shopping cart">
+                    Do koszyka
+                    <AddShoppingCartIcon />
+                    </IconButton>
+                    :
+                    <div>Jeżeli chcesz zamówić, musisz zalogować się</div>
+                }
                 </ThemeProvider>
                 </CardActions>
                 </Card>
