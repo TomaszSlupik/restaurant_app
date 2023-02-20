@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import moment from 'moment/moment'
 import useLogin from '../../hooks/useLogin'
+import Button from '@mui/material/Button';
+import { ThemeProvider } from '@emotion/react';
+import themeColor from '../../theme/theme';
 
-export default function Drawmeals({allproducts}) {
+export default function Drawmeals({allproducts, colorTheme}) {
 
 const meal = allproducts.map (el => el.name_meal)
 const bestmeal = 10
@@ -30,23 +33,31 @@ useEffect(()=> {
     }, 1000);
 }, [])
 
+const style = {
+    btn: {width: '125px'}
+}
 
   return (
     <div>
         <div>Wylosuj posiłek za {bestmeal} zł</div>
+        <ThemeProvider theme={themeColor}>
         {
             
             login ? 
             <div>
             <div>{drawmeal}</div>
             <div>Do końca oferty pozostało: {time}</div>
-            <button 
-            onClick={randomMeal}>Losuj</button>
+            <Button 
+            style={style.btn}
+            color={colorTheme}
+            variant="contained"
+            onClick={randomMeal}>Losuj
+            </Button>
             </div>
             :
             <div>Aby wylosować posiłek musisz zalogować się </div>
         }
-        
+        </ThemeProvider>
     </div>
 
   )

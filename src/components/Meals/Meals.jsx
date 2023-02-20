@@ -14,6 +14,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import themeColor from '../../theme/theme';
 import useLogin from '../../hooks/useLogin';
+import Rating from '@mui/material/Rating';
 
 export default function Meals({allproducts, setAllProducts, colorTheme, lastBuy}, props) {
 
@@ -22,9 +23,8 @@ export default function Meals({allproducts, setAllProducts, colorTheme, lastBuy}
     const meal = allproducts.map (el => el.name_meal)
 
     // ostatnio kupione 
-    const clickMeal = (e) => {
-        e.preventDefault()
-        lastBuy(allproducts.map(el => el.name_meal))
+    const clickMeal = (id) => {
+        lastBuy(id)
     }
 
   return (
@@ -51,6 +51,10 @@ export default function Meals({allproducts, setAllProducts, colorTheme, lastBuy}
                     <Typography variant="body2" color="text.secondary">
                     {el.describe}
                     </Typography>
+                    Ocena Klientów 
+                    <Rating name="read-only" value={el.rating} 
+                    precision={0.5}
+                    readOnly />
                 </CardContent>
                 <CardActions>
                 <ThemeProvider theme={themeColor}>

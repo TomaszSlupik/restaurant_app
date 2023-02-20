@@ -1,8 +1,12 @@
 import React from 'react'
 import useLogin from '../../hooks/useLogin'
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Button from '@mui/material/Button';
+import { ThemeProvider } from '@emotion/react';
+import themeColor from '../../theme/theme';
 
-
-export default function Menu() {
+export default function Menu({colorTheme}) {
 
     const [login, setLogin] = useLogin()
 
@@ -18,16 +22,28 @@ export default function Menu() {
 
   return (
     <div>
+      <ThemeProvider theme={themeColor}>
         {
+            
             login ? 
-            <div
+            <Button
+            color={colorTheme}
+            variant="contained"
             onClick={logouteryfication}
-            >Wyloguj</div>
+            >Wyloguj
+            <LogoutIcon />
+            </Button>
              : 
-             <div
+             <Button 
+             color={colorTheme}
+             variant="contained"
              onClick={loginveryfication}
-             >Zaloguj</div>
+             >Zaloguj
+             <LoginIcon />
+             </Button> 
+             
         }
+        </ThemeProvider>
     </div>
   )
 }

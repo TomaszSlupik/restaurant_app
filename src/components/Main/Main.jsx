@@ -67,10 +67,10 @@ const lastBuy = (allproducts) => {
                   logout: () => setLoginVeryfication(false)
                 }}>
                 <Layout 
-                  menu={<Menu />}
+                  menu={<Menu colorTheme={colorTheme}/>}
                   countmeals={<Countmeals allproducts={allproducts}/>}
                   bestmeals={<Bestmeals getbestmeal={bestMeals}/>}
-                  drawmeal={<Drawmeals allproducts={allproducts}/>}
+                  drawmeal={<Drawmeals allproducts={allproducts} colorTheme={colorTheme}/>}
                   yourbestmeal={<Yourbestmeals storage={storage} setStorage={setStorage}/>}
                   header={<Header searchMeal={searchMeal} allProductList={allProductList} changeColor={changeColor}/>}
                   meals={<Meals allproducts={allproducts} setAllProducts={setAllProducts} colorTheme={colorTheme} lastBuy={lastBuy}/>}
