@@ -11,6 +11,9 @@ import Drawmeals from '../Drawmeal/Drawmeals'
 import LoginContext from '../../context/loginContext'
 import useStorage from '../../hooks/useStorage'
 import Yourbestmeals from '../Yourbestmeals/Yourbestmeals'
+import useTitlewebside from '../../hooks/useTitlewebside'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Profile from '../Profile/Profile'
 
 export default function Main()  {
 
@@ -19,7 +22,7 @@ export default function Main()  {
   const [colorTheme, setColorTheme] = useState('primary')
   const [loginveryfication, setLoginVeryfication] = useState(true)
   const [storage, setStorage] = useStorage('klucz', 'wartość początkowa')
-  const [mealBest, setMealBest] = useStorage(null)
+  const [mealBest, setMealBest] = useStorage('Ostatnio kupione', null)
 
 // Wyszukiwarka 
 const searchMeal = (inputValue) => {
@@ -50,12 +53,17 @@ const bestMeals = useCallback (() => {
   }
 }, [allproducts])
 
-// Ostatnio kupione
+// Ostatnio kupione - ostatnio kliknięto "Do koszyka"
 const lastBuy = (allproducts) => {
-    console.log(allproducts)
-    // setMealBest(meal)
+    setMealBest(allproducts)
 }
 
+
+// Twoje zamówienie:
+
+
+// Tytuł strony 
+useTitlewebside('Tomasz Słupik')
 
 
   return (
@@ -66,15 +74,24 @@ const lastBuy = (allproducts) => {
                   login: () => setLoginVeryfication(true),
                   logout: () => setLoginVeryfication(false)
                 }}>
-                <Layout 
+                <Router>
+                  <Routes>
+                  <Route path='/' element={ 
+                  <Layout 
                   menu={<Menu colorTheme={colorTheme}/>}
                   countmeals={<Countmeals allproducts={allproducts}/>}
                   bestmeals={<Bestmeals getbestmeal={bestMeals}/>}
                   drawmeal={<Drawmeals allproducts={allproducts} colorTheme={colorTheme}/>}
-                  yourbestmeal={<Yourbestmeals storage={storage} setStorage={setStorage}/>}
+                  yourbestmeal={<Yourbestmeals {...mealBest} storage={storage} setStorage={setStorage}/>}
                   header={<Header searchMeal={searchMeal} allProductList={allProductList} changeColor={changeColor}/>}
                   meals={<Meals allproducts={allproducts} setAllProducts={setAllProducts} colorTheme={colorTheme} lastBuy={lastBuy}/>}
-                  />
+                  />} />
+
+                 <Route path='/profile' element={<Profile />} />
+
+                  </Routes>
+                </Router>
+                
                 </LoginContext.Provider>
               </div>
     </div>

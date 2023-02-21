@@ -1,6 +1,53 @@
+$main: #fff;
 .bestmeals {
     position: relative;
     width: 100vw;
     height: 100%;
-    
+    display: flex;
+    justify-content: center;
+    &__box {
+        position: relative;
+        width: 80%;
+        &-text {
+            font-size: 1rem;
+            font-weight: 300;
+            color: $main;
+        }
+        &-mark {
+            font-size: 1rem;
+            font-weight: 400;
+            color: black;
+
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .bestmeals {
+        &__box {
+            &-text{
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .bestmeals {
+        &__box {
+            &-text {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .bestmeals {
+        &__box {
+            &-text {
+                font-size: 2.2rem;
+            }
+        }
+    }
 }

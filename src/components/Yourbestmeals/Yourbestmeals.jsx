@@ -1,5 +1,7 @@
+import { Card } from '@mui/material'
 import React from 'react'
 import useLogin from '../../hooks/useLogin'
+import './Yourbestmeals.scss'
 
 
 export default function Yourbestmeals(props) {
@@ -11,13 +13,20 @@ export default function Yourbestmeals(props) {
     <div>
         {
             login ? 
-            <div>Ostatnio kupiłeś: 
-                <input 
-                type="text"
-                onChange={e => props.setStorage (e.target.value)}
-                value={props.storage}
-                />
-            </div> : null
+            <div className="yourbestmeal">
+              <div className="yourbestmeal__box">
+                  <Card className='yourbestmeal__box-card'>
+                      <img className='yourbestmeal__box-card--img' src={process.env.PUBLIC_URL + props.image} />
+                      
+                      <div className='yourbestmeal__box-card--text'>Ostatnio kupiłeś:</div> 
+                      <div className='yourbestmeal__box-card--text'>{props.name_meal}</div>
+                    </Card>
+              </div>
+            </div>
+            
+           
+            
+            : null
         }
     </div>
   )

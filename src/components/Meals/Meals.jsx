@@ -20,11 +20,10 @@ export default function Meals({allproducts, setAllProducts, colorTheme, lastBuy}
 
     const [login] = useLogin();
 
-    const meal = allproducts.map (el => el.name_meal)
-
     // ostatnio kupione 
-    const clickMeal = (id) => {
-        lastBuy(id)
+    const clickMeal = (el) => {
+        lastBuy(el)
+        
     }
 
   return (
@@ -61,7 +60,7 @@ export default function Meals({allproducts, setAllProducts, colorTheme, lastBuy}
                 {
                     login ?
                      <IconButton 
-                     onClick={clickMeal}
+                     onClick={() => clickMeal(el)}
                      color={colorTheme} aria-label="add to shopping cart">
                     Do koszyka
                     <AddShoppingCartIcon />

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import './Countmeals.scss'
 
 export default function Countmeals({allproducts}) {
 
