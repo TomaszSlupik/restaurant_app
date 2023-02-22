@@ -26,3 +26,36 @@
         }
     }
 }
+
+@media only screen and (min-width: 576px) {
+    .yourbestmeal {
+        &__box {
+            &-card {
+                height: 210px;
+            }}}
+}
+
+@media only screen and (min-width: 762px) {
+    .yourbestmeal {
+        &__box {
+            &-card {
+                height: 300px;
+            }}}
+}
+
+@media only screen and (min-width: 1200px) {
+    .yourbestmeal {
+        &__box {
+            &-card {
+                height: 360px;
+            }}}
+}
+
+@media only screen and (min-width: 1400px) {
+    .yourbestmeal {
+        &__box {
+            &-card {
+                height: 520px;
+            }}}
+}
+

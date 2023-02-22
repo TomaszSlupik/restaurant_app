@@ -44,6 +44,8 @@ const style = {
         {
             
             login ? 
+            <div>Aby wylosować posiłek musisz zalogować się </div>
+            :
             <div>
             <div>{drawmeal}</div>
             <div>Do końca oferty pozostało: {time}</div>
@@ -54,8 +56,6 @@ const style = {
             onClick={randomMeal}>Losuj
             </Button>
             </div>
-            :
-            <div>Aby wylosować posiłek musisz zalogować się </div>
         }
         </ThemeProvider>
     </div>

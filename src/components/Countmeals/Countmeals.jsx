@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import './Countmeals.scss'
+import RamenDiningIcon from '@mui/icons-material/RamenDining';
 
 export default function Countmeals({allproducts}) {
 
@@ -17,8 +18,10 @@ function Mealscount (props) {
 
   return (
     <div>
-            <div >
-                Liczba posiłków w menu: {allproducts.length}
+            <div className='countmeals'>
+                <RamenDiningIcon style={{fontSize: '2rem'}}/>
+                <div className='countmeals__header'>Liczba dostępnych posiłków w menu:</div>
+                 <div className='countmeals__length'>{allproducts.length}</div>
             </div>
     </div>
   )

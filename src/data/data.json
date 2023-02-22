@@ -54,5 +54,13 @@
         "price": 20, 
         "rating": 2.5,
         "describe": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo necessitatibus, repellendus ad deleniti laboriosam nisi eveniet cumque et quia unde sequi perferendis error ipsum illum provident cum doloribus tenetur quos?"
+    },
+    {
+        "id": 7,
+        "name_meal": "Spaghetti carbonara",
+        "image": "/img/carbonara.jpg", 
+        "price": 15, 
+        "rating": 3.5,
+        "describe": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo necessitatibus, repellendus ad deleniti laboriosam nisi eveniet cumque et quia unde sequi perferendis error ipsum illum provident cum doloribus tenetur quos?"
     }
 ]

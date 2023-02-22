@@ -1,0 +1,16 @@
+.form {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    &__email {
+        margin-top: 1em;
+    }
+    &__btn {
+        margin-top: 2em;
+    }
+
+    &__email, &__password, &__btn {
+        margin-left: 0.5em;
+    }
+
+}

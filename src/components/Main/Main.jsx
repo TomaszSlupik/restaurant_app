@@ -88,7 +88,6 @@ useTitlewebside('Tomasz Słupik')
                   />} />
 
                  <Route path='/profile' element={<Profile />} />
-
                   </Routes>
                 </Router>
                 

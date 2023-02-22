@@ -59,14 +59,14 @@ export default function Meals({allproducts, setAllProducts, colorTheme, lastBuy}
                 <ThemeProvider theme={themeColor}>
                 {
                     login ?
-                     <IconButton 
-                     onClick={() => clickMeal(el)}
-                     color={colorTheme} aria-label="add to shopping cart">
-                    Do koszyka
-                    <AddShoppingCartIcon />
-                    </IconButton>
-                    :
                     <div>Jeżeli chcesz zamówić, musisz zalogować się</div>
+                    :
+                    <IconButton 
+                    onClick={() => clickMeal(el)}
+                    color={colorTheme} aria-label="add to shopping cart">
+                   Do koszyka
+                   <AddShoppingCartIcon />
+                   </IconButton>
                 }
                 </ThemeProvider>
                 </CardActions>
