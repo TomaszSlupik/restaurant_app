@@ -9,13 +9,18 @@ export default function useLogin() {
 
     useDebugValue(login ? 'zalogowany' : 'wylogowany')
 
-    const setLogin = (value) => {
-        if (value) {
+    const setLogin = (isAuthenticated, tokenData= null) => {
+        if (isAuthenticated) {
             loginContext.login()
+            if (tokenData) {
+                window.localStorage.setItem('token', JSON.stringify())
+            }
         }
         else {
             loginContext.logout()
+            window.localStorage.removeItem('token')
         }   
+       
     }
 
   return [login, setLogin]

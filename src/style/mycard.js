@@ -21,6 +21,16 @@ const Mycard = styled('div')(({theme}) => ({
         minHeight: '300px', 
         margin: '0.8em 0.8em'
     }, 
+    [theme.breakpoints.up('xl')] : {
+        minWidth: '345px', 
+        minHeight: '300px', 
+        margin: '0.8em 0.8em'
+    }, 
+    [theme.breakpoints.up('xxl')] : {
+        minWidth: '550px', 
+        minHeight: '300px', 
+        margin: '0.8em 0.8em'
+    }, 
 
 }))
 

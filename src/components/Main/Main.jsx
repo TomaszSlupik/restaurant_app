@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Layout from '../../layout/Layout'
 import Header from '../Header/Header'
 import Meals from '../Meals/Meals'
@@ -12,8 +12,9 @@ import LoginContext from '../../context/loginContext'
 import useStorage from '../../hooks/useStorage'
 import Yourbestmeals from '../Yourbestmeals/Yourbestmeals'
 import useTitlewebside from '../../hooks/useTitlewebside'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, json } from 'react-router-dom'
 import Profile from '../Profile/Profile'
+import useEmail from '../../hooks/useEmail'
 
 export default function Main()  {
 
@@ -53,17 +54,29 @@ const bestMeals = useCallback (() => {
   }
 }, [allproducts])
 
+// Twoje zamówienie:
+const [yourShopping, setYourShopping] = useState([])
+
+
 // Ostatnio kupione - ostatnio kliknięto "Do koszyka"
 const lastBuy = (allproducts) => {
     setMealBest(allproducts)
+
+    console.log(allproducts.name_meal)
 }
-
-
-// Twoje zamówienie:
 
 
 // Tytuł strony 
 useTitlewebside('Tomasz Słupik')
+
+// Propsy do Logowania
+const [email, setEmail] = useState(null)
+console.log(email)
+
+const [storageEamil, setStorageEmail] = useEmail('Twójemail', email)
+console.log(storageEamil)
+
+
 
 
   return (
@@ -78,7 +91,7 @@ useTitlewebside('Tomasz Słupik')
                   <Routes>
                   <Route path='/' element={ 
                   <Layout 
-                  menu={<Menu colorTheme={colorTheme}/>}
+                  menu={<Menu colorTheme={colorTheme} email={email} setEmail={setEmail} storageEamil={storageEamil} />}
                   countmeals={<Countmeals allproducts={allproducts}/>}
                   bestmeals={<Bestmeals getbestmeal={bestMeals}/>}
                   drawmeal={<Drawmeals allproducts={allproducts} colorTheme={colorTheme}/>}
@@ -87,10 +100,9 @@ useTitlewebside('Tomasz Słupik')
                   meals={<Meals allproducts={allproducts} setAllProducts={setAllProducts} colorTheme={colorTheme} lastBuy={lastBuy}/>}
                   />} />
 
-                 <Route path='/profile' element={<Profile />} />
+                 <Route path='/profile' element={<Profile email={email}  />} />
                   </Routes>
                 </Router>
-                
                 </LoginContext.Provider>
               </div>
     </div>

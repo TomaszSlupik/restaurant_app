@@ -15,11 +15,12 @@ import { ThemeProvider } from '@emotion/react';
 import breakpoints from '../../theme/breakpoints';
 import Myinput from '../../style/myinput';
 import themeColor from '../../theme/theme';
+import axios from 'axios';
+import mykey from '../../key/key'
 
 
 
-
-export default function Login({colorTheme, loginveryfication}) {
+export default function Login({colorTheme, email, setEmail}) {
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -30,23 +31,33 @@ export default function Login({colorTheme, loginveryfication}) {
     };
 
     // Logowanie - przechwycenie inputów
-    const [email, setEmail] = useState()
+    // const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const [auth, setAuth] = useLogin()
+    const [login, setLogin] = useLogin()
     const [valid, setValid] = useState(null)
+    const [error, setError] = useState()
 
-    const submit = (e) => {
+    const submit = async (e) => {
+        e.preventDefault()
+        try {
+          const res = await mykey.post('/accounts:signInWithPassword', {
+            email : email,
+            password: password,
+            returnSecureToken: true
+          })
+          console.log(res)
+          setLogin(false, {
+            email: res.data.email, 
+            password: res.data.idToken
+          })
+          setError(false)
+        }
+        catch (ex) {
+          setLogin(true)
+          console.log(ex.response)
+          setError(ex.response.data.error.message)
+        }
 
-        if (true) {
-          e.preventDefault()
-          setAuth(true)
-          console.log(auth)
-          loginveryfication(e)
-        }
-        else {
-          setValid(false)
-          setPassword('')
-        }
       }
       
 
@@ -111,6 +122,12 @@ export default function Login({colorTheme, loginveryfication}) {
                   >Zaloguj
                   <LoginIcon />
                   </Button> 
+                  {
+                      error ? 
+                      <Alert severity="error">{error}</Alert> 
+                      :
+                      null
+                  }
                 </div>
               </div>
               </ThemeProvider>

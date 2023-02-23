@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import Login from '../Login/Login';
 
 import { useState} from 'react';
+import Register from '../Register/Register';
 
 
-export default function Menu({colorTheme}) {
+export default function Menu({colorTheme, email, setEmail, storageEamil}) {
 
     const [login, setLogin] = useLogin()
 
@@ -31,18 +32,21 @@ export default function Menu({colorTheme}) {
         navigate('/profile')
     }
 
+    // Panel logowania i rejestracji
     const [loginShow, setLoginShow] = useState(false)
+     const [registerShow, setRegisterShow] = useState(false)
 
     const changeShowLogin = () => {
         setLoginShow(true)
+        setRegisterShow(false)
+
+    }
+
+    const changeShowRegister = () => {
+      setRegisterShow(true)
+      setLoginShow(false)
     }
  
-  //   const loginCard = useRef(null)
-
-
-  //   useEffect (() => {
-  //     changeShowLogin()
-  // }, [])
 
 
   return (
@@ -50,17 +54,23 @@ export default function Menu({colorTheme}) {
       <ThemeProvider theme={themeColor}>
         {
             login ? 
-             <>
-            <Button>Rejestracja</Button>
+             <> 
+            <Button
+            onClick={changeShowRegister}
+            >Rejestracja</Button>
             <Button
             onClick={changeShowLogin}
             >Logowanie</Button>
             {
               loginShow ?  <Login
-              // ref={loginCard} 
+              email={email} setEmail={setEmail}
               colorTheme={colorTheme} loginveryfication={loginveryfication}/>
               :
-              <div>Rejestracja</div>
+              registerShow ?
+              <Register 
+              colorTheme={colorTheme} loginveryfication={loginveryfication}
+              />
+              : <div>Jeżeli nie masz konta, zarejestruj się. Mając konto możesz zamawiać posiłki i korzystać z promocji.</div>
             }
            
              </> 
@@ -86,6 +96,7 @@ export default function Menu({colorTheme}) {
              
         }
         </ThemeProvider>
+  
     </div>
   )
 }
