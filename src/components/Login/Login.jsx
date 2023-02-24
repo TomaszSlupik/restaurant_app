@@ -15,7 +15,6 @@ import { ThemeProvider } from '@emotion/react';
 import breakpoints from '../../theme/breakpoints';
 import Myinput from '../../style/myinput';
 import themeColor from '../../theme/theme';
-import axios from 'axios';
 import mykey from '../../key/key'
 
 
@@ -36,6 +35,8 @@ export default function Login({colorTheme, email, setEmail}) {
     const [login, setLogin] = useLogin()
     const [valid, setValid] = useState(null)
     const [error, setError] = useState()
+    const [id, setId] = useState()
+
 
     const submit = async (e) => {
         e.preventDefault()
@@ -45,11 +46,13 @@ export default function Login({colorTheme, email, setEmail}) {
             password: password,
             returnSecureToken: true
           })
-          console.log(res)
+          
           setLogin(false, {
             email: res.data.email, 
-            password: res.data.idToken
+            token: res.data.idToken,
+            id: res.data.localId
           })
+
           setError(false)
         }
         catch (ex) {
@@ -57,8 +60,8 @@ export default function Login({colorTheme, email, setEmail}) {
           console.log(ex.response)
           setError(ex.response.data.error.message)
         }
-
       }
+
       
 
   return (

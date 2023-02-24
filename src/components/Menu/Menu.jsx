@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useLogin from '../../hooks/useLogin'
 import LogoutIcon from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
@@ -47,7 +47,7 @@ export default function Menu({colorTheme, email, setEmail, storageEamil}) {
       setLoginShow(false)
     }
  
-
+  
 
   return (
     <div>

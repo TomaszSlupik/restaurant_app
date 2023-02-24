@@ -15,6 +15,8 @@ import useTitlewebside from '../../hooks/useTitlewebside'
 import { BrowserRouter as Router, Routes, Route, json } from 'react-router-dom'
 import Profile from '../Profile/Profile'
 import useEmail from '../../hooks/useEmail'
+import axios from 'axios'
+import useLogin from '../../hooks/useLogin'
 
 export default function Main()  {
 
@@ -59,10 +61,37 @@ const [yourShopping, setYourShopping] = useState([])
 
 
 // Ostatnio kupione - ostatnio kliknięto "Do koszyka"
-const lastBuy = (allproducts) => {
+const lastBuy = async (allproducts) => {
     setMealBest(allproducts)
-
     console.log(allproducts.name_meal)
+
+    try {
+      await axios.post('/meals.json', {
+        name: 'Naleśniki'
+      }, { 'Content-Type': 'application/json' })
+    }
+    catch (ex) {
+        console.log(ex.response)
+    }
+
+    // try {
+    //   const res = {
+    //     'jsdshd23': {
+    //       name_meal: allproducts
+    //     }
+    //   }
+    //   const newMeal = []
+
+    //   for (const key in res) {
+    //     newMeal.push({...res[key], id: key})
+    //   }
+    //   setYourShopping(newMeal)
+
+    //   console.log(yourShopping)
+    // }
+    // catch (ex) {
+    //     console.log(ex.response)
+    // }
 }
 
 
@@ -71,10 +100,23 @@ useTitlewebside('Tomasz Słupik')
 
 // Propsy do Logowania
 const [email, setEmail] = useState(null)
-console.log(email)
 
 const [storageEamil, setStorageEmail] = useEmail('Twójemail', email)
 console.log(storageEamil)
+
+// Sprawdzenie użuytkownika 
+
+const checkUser = () => {
+  const token = JSON.parse(window.localStorage.getItem('token'))
+  console.log(token)
+  if (token) {
+    setLoginVeryfication(false)
+  }
+}
+
+useEffect(() => {
+  checkUser()
+}, [])
 
 
 
@@ -100,7 +142,7 @@ console.log(storageEamil)
                   meals={<Meals allproducts={allproducts} setAllProducts={setAllProducts} colorTheme={colorTheme} lastBuy={lastBuy}/>}
                   />} />
 
-                 <Route path='/profile' element={<Profile email={email}  />} />
+                 <Route path='/profile' element={<Profile email={email}  yourShopping={yourShopping}/>} />
                   </Routes>
                 </Router>
                 </LoginContext.Provider>
