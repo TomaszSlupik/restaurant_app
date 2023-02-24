@@ -10,11 +10,12 @@ import Login from '../Login/Login';
 
 import { useState} from 'react';
 import Register from '../Register/Register';
+import Datameals from '../Datameals/Datameals';
 
 
 export default function Menu({colorTheme, email, setEmail, storageEamil}) {
 
-    const [login, setLogin] = useLogin()
+    const [login, setLogin] = useLogin(true)
 
     const loginveryfication = (e) => {
         e.preventDefault()
@@ -92,6 +93,8 @@ export default function Menu({colorTheme, email, setEmail, storageEamil}) {
              >Wyloguj
              <LogoutIcon />
              </Button>
+             
+             <Datameals />
              </>
              
         }

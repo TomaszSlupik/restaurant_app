@@ -36,7 +36,7 @@ export default function Login({colorTheme, email, setEmail}) {
     const [valid, setValid] = useState(null)
     const [error, setError] = useState()
     const [id, setId] = useState()
-
+    const [loginParam, setLoginParam] = useState()
 
     const submit = async (e) => {
         e.preventDefault()
@@ -46,7 +46,8 @@ export default function Login({colorTheme, email, setEmail}) {
             password: password,
             returnSecureToken: true
           })
-          
+       
+
           setLogin(false, {
             email: res.data.email, 
             token: res.data.idToken,

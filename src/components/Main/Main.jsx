@@ -74,24 +74,7 @@ const lastBuy = async (allproducts) => {
         console.log(ex.response)
     }
 
-    // try {
-    //   const res = {
-    //     'jsdshd23': {
-    //       name_meal: allproducts
-    //     }
-    //   }
-    //   const newMeal = []
 
-    //   for (const key in res) {
-    //     newMeal.push({...res[key], id: key})
-    //   }
-    //   setYourShopping(newMeal)
-
-    //   console.log(yourShopping)
-    // }
-    // catch (ex) {
-    //     console.log(ex.response)
-    // }
 }
 
 
